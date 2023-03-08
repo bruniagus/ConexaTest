@@ -17,7 +17,10 @@ tasks:
       sed -i "s|APP_URL=https://|APP_URL=https://8000-|g" .env &&
       composer install &&
       npm i &&
-      php artisan key:generate
+      php artisan key:generate &&
+      php artisan migrate && 
+      php artisan db:seed &&
+      php artisan jwt:secret
     command: >
       php -S 0.0.0.0:8000 -t public
     
